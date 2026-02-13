@@ -1,0 +1,38 @@
+name: CI E2E (Cypress)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  cypress-e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress E2E
+        run: npx cypress run
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+          CYPRESS_E2E_EMAIL: ${{ secrets.CYPRESS_E2E_EMAIL }}
+          CYPRESS_E2E_SENHA: ${{ secrets.CYPRESS_E2E_SENHA }}
+
+      - name: Upload Cypress artifacts (only on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
