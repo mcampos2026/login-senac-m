@@ -1,0 +1,19 @@
+{
+  "name": "cypress-login-ebac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test:e2e": "cypress run --e2e",
+    "test:api": "cypress run --e2e --spec \"cypress/e2e/api/**/*.cy.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.9.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "loginValido": {
+    "email": "",
+    "senha": ""
+  },
+  "emailInvalido": {
+    "email": "email_invalido@teste.com",
+    "senha": "senha_valida",
+    "mensagemErro": "E-mail não encontrado!"
+  },
+  "camposVazios": {
+    "email": "",
+    "senha": ""
+  },
+  "textoAreaExclusiva": "Welcome"
+}
